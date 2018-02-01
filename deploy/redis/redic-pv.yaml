@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-redis0001
+  labels:
+    pv: redis
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    path: /home/nfs/redis/r1
+    server: 10.8.177.28
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-redis0002
+  labels:
+    pv: redis
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    path: /home/nfs/redis/r2
+    server: 10.8.177.28

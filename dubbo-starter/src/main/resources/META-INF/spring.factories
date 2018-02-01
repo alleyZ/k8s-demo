@@ -1,0 +1,6 @@
+org.springframework.context.ApplicationContextInitializer=\
+com.alleyz.k8s.starter.dubbo.DubboConfigInitializer
+org.springframework.context.ApplicationListener=\
+com.alleyz.k8s.starter.dubbo.DubboHolderListener
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.alleyz.k8s.starter.dubbo.DubboAutoConfiguration

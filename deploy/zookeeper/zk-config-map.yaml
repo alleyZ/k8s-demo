@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: zk-cm
+  namespace: demo
+data:
+  jvm.heap: "1G"
+  tick: "2000"
+  init: "10"
+  sync: "5"
+  client.cnxns: "60"
+  snap.retain: "3"
+  purge.interval: "0"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: zk-cm-2
+  namespace: demo
+data:
+  zk-config: |
+    jvm.heap: "1G"
+    tick: "2000"
+    init: "10"
+    sync: "5"
+    client.cnxns: "60"
+    snap.retain: "3"
+    purge.interval: "0"

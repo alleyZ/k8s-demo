@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: k8s-tomcat-rc
+spec:
+  replicas: 3
+  selector:
+    demo: k8s-tomcat
+  template:
+    metadata:
+      labels:
+        demo: k8s-tomcat
+        name: demo
+    spec:
+      containers:
+      - name: tomcat-demo
+        image: alleyz.com:5000/k8s-tomcat-demo:1211
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080

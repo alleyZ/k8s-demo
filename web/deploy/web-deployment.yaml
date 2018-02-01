@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: user-web-dep
+  namespace: demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: user-web
+  template:
+    metadata:
+      namespace: demo
+      labels:
+        app: user-web
+    spec:
+      containers:
+      - name: user-web
+        image: alleyz.com:5000/demo/web:11
+        imagePullPolicy: Always
+        env:
+          - name: ZK_HOST
+            value: "zk-0.zk-svc.demo.svc.cluster.local:2181\\/\\/zk-1.zk-svc.demo.svc.cluster.local:2181\\/\\/zk-2.zk-svc.demo.svc.cluster.local:2181"
+          - name: REDIS_HOST
+            value: "10.44.0.3"
+          - name: REDIS_PORT
+            value: "6379"
+          - name: REDIS_PWD
+            value: "12345678Az"
+          - name: REDIS_DB_IDX
+            value: "6"
+        ports:
+        - containerPort: 8080

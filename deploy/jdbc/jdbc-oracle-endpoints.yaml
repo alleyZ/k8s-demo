@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: jdbc-oracle
+  namespace: demo
+subsets:
+  - addresses:
+    - ip: 10.8.177.200
+    ports:
+    - port: 1521
+      protocol: TCP

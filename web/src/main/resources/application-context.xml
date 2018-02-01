@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context.xsd
+                        http://www.springframework.org/schema/task
+                        http://www.springframework.org/schema/task/spring-task-4.0.xsd
+                        http://code.alibabatech.com/schema/dubbo
+                        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <context:property-placeholder location="classpath:configure.properties"/>
+
+
+    <dubbo:application name="web-tomcat"/>
+
+    <!-- registry address, used for consumer to discover services -->
+    <dubbo:registry protocol="zookeeper" address="${zk.dubbo}" />
+
+    <!--<dubbo:protocol host="10.8.8.13"/>-->
+    <!--监控-->
+    <dubbo:monitor protocol="registry"/>
+
+    <!-- 扫描注解包路径，多个包用逗号分隔，不填pacakge表示扫描当前ApplicationContext中所有的类 -->
+    <dubbo:annotation package="com.alleyz.k8s"/>
+
+    <context:component-scan base-package="com.alleyz.k8s.web">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <!-- 开启异步任务 -->
+    <task:executor id="asyncExecutor" pool-size="100-10000" queue-capacity="10"/>
+    <task:annotation-driven  executor="asyncExecutor"/>
+
+
+</beans>

@@ -1,0 +1,43 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: redis-master-dev
+  namespace: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      namespace: demo
+      name: redis-master
+      labels:
+        app: redis
+        redis: master
+    spec:
+      containers:
+      - name: redis-master
+        image: alleyz.com:5000/redis-3.2.11:alpine-simple
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: MASTER
+            value: "true"
+          - name: PASSWORD
+            value: "12345678Az"
+        ports:
+        - containerPort: 6379
+        resources:
+          requests:
+            memory: "4Gi"
+          limits:
+            memory: "8Gi"
+        volumeMounts:
+          - mountPath: /redis-data
+            name: redis-pvc-master
+      nodeSelector:
+        type: phy
+      volumes:
+        - name: redis-pvc-master
+          persistentVolumeClaim:
+            claimName: redis-pvc-0001

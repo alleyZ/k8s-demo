@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dubbo-admin-svc
+  namespace: demo
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    nodePort: 31002
+  selector:
+    app: dubbo-admin

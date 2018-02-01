@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: k8s-tomcat
+  namespace: demo
+  labels:
+    name: demo
+    demo: k8s-tomcat
+spec:
+  containers:
+  - name: k8s-tomcat
+    image: alleyz.com:5000/k8s-tomcat-demo:1211
+    ports:
+    - containerPort: 8080
+    resources:
+      requests:
+        memory: "128Mi"
+        cpu: "250m"
+      limits:
+        memory: "512Mi"
+        cpu: "500m"

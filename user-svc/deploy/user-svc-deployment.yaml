@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: user-svc-dep
+  namespace: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-svc
+  template:
+    metadata:
+      namespace: demo
+      labels:
+        app: user-svc
+    spec:
+      containers:
+      - name: user-svc
+        image: alleyz.com:5000/user-svc:10
+        imagePullPolicy: Always
+        env:
+          - name: ZK_HOST
+            value: "zk-0.zk-svc.demo.svc.cluster.local:2181\\/\\/zk-1.zk-svc.demo.svc.cluster.local:2181\\/\\/zk-2.zk-svc.demo.svc.cluster.local:2181"
+          - name: JDBC_URL
+            value: "jdbc\\:oracle\\:thin\\:@10\\.8\\.177\\.200\\:1521\\:orcl"
+          - name: DB_NAME
+            value: "hollyvoc_beacon"
+          - name: DB_PASSWORD
+            value: "hollyvoc_beacon"
+        ports:
+        - containerPort: 20880

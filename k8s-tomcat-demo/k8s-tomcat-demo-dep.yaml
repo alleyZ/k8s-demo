@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: k8s-tomcat-dep
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      demo: k8s-tomcat
+  template:
+    metadata:
+      labels:
+        demo: k8s-tomcat
+        name: demo
+    spec:
+      containers:
+      - name: tomcat-demo
+        image: alleyz.com:5000/k8s-tomcat-demo:1211
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080

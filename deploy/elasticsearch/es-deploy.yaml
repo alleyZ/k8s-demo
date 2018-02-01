@@ -1,0 +1,78 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: es-dep
+  namespace: demo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: es
+  template:
+    metadata:
+      namespace: demo
+      name: es
+      labels:
+        app: es
+      annotations:
+        pod.beta.kubernetes.io/init-containers: '[
+          {
+           "name": "sysctl",
+           "image": "busybox",
+           "imagePullPolicy": "IfNotPresent",
+           "command": ["sysctl", "-w", "vm.max_map_count=262144"],
+           "securityContext": {
+             "privileged": true
+            }
+           }
+        ]'
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+             matchExpressions:
+             - key: app
+               operator: In
+               values:
+               - es
+            topologyKey: kubernetes.io/hostname
+      containers:
+      - name: es
+        image: alleyz.com:5000/elasticsearch:5.6.5
+        imagePullPolicy: Always
+        env:
+          - name: CLUSTER_NAME
+            value: "k8s-es"
+          - name: MIN_MASTER_NODE
+            value: "2"
+          - name: DISCOVERY_SERVICE
+            value: "es-discovery"
+        ports:
+        - containerPort: 9200
+          name: http
+          protocol: TCP
+        - containerPort: 9300
+          name: transport
+          protocol: TCP
+        securityContext:
+          privileged: true
+        resources:
+          requests:
+            cpu: "300m"
+          limits:
+            cpu: "500m"
+        volumeMounts:
+          - mountPath: /elasticsearch/data
+            name: es-data
+          - mountPath: /elasticsearch/logs
+            name: es-log
+      nodeSelector:
+        type: phy
+      volumes:
+        - name: es-data
+          hostPath:
+            path: /home/k8s/es/data
+        - name: es-log
+          hostPath:
+            path: /home/k8s/es/logs

@@ -1,0 +1,79 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-zk-0001
+  labels:
+    pv: zk
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    path: /home/nfs/zookeeper/z1
+    server: 10.8.177.28
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-zk-0002
+  labels:
+    pv: zk
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    path: /home/nfs/zookeeper/z2
+    server: 10.8.177.28
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-zk-0003
+  labels:
+    pv: zk
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    path: /home/nfs/zookeeper/z3
+    server: 10.8.177.28
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-zk-0004
+  labels:
+    pv: zk
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    path: /home/nfs/zookeeper/z4
+    server: 10.8.177.28
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-zk-0005
+  labels:
+    pv: zk
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    path: /home/nfs/zookeeper/z5
+    server: 10.8.177.28

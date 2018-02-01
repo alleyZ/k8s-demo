@@ -1,0 +1,11 @@
+.idea
+.DS_Store
+.idea/*
+*.iml
+target
+target/*
+.svn
+.svn/*
+*.[tw]ar
+*.gz
+*.zip

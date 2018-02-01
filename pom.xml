@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.alleyz.k8s</groupId>
+    <artifactId>k8s-demo</artifactId>
+    <packaging>pom</packaging>
+    <version>10</version>
+    <modules>
+        <module>k8s-tomcat-demo</module>
+        <module>tomcat-session-manager</module>
+        <module>web</module>
+        <module>api-svc</module>
+        <module>user-svc</module>
+        <module>dubbo-starter</module>
+    </modules>
+
+    <properties>
+        <spring.boot>1.5.9.RELEASE</spring.boot>
+    </properties>
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.18</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <!-- 输出目录 -->
+        <directory>${project.basedir}/target</directory>
+        <plugins>
+            <!-- 编译插件  -->
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>2.6</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>2.6</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>2.6</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <distributionManagement>
+        <repository>
+            <id>3rdParty</id>
+            <name>bd_publish</name>
+            <url>http://10.8.177.28:18081/repository/maven-snapshots/</url>
+        </repository>
+    </distributionManagement>
+
+</project>

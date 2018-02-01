@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: dubbo-admin-dep
+  namespace: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dubbo-admin
+  template:
+    metadata:
+      namespace: demo
+      labels:
+        app: dubbo-admin
+    spec:
+      containers:
+      - name: dubbo-admin
+        image: alleyz.com:5000/dubbo-admin:2.5.8
+        imagePullPolicy: Always
+        env:
+          - name: ZK_HOST
+            value: "zk-0.zk-svc.demo.svc.cluster.local:2181\\/\\/zk-1.zk-svc.demo.svc.cluster.local:2181\\/\\/zk-2.zk-svc.demo.svc.cluster.local:2181"
+          - name: ROOT_PWD
+            value: "123abc"
+          - name: GUEST_PWD
+            value: "123456"
+        ports:
+        - containerPort: 8080

@@ -1,0 +1,55 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: redis-slave-dev
+  namespace: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      namespace: demo
+      name: redis-slave
+      labels:
+        app: redis
+        redis: slave
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+             matchExpressions:
+             - key: app
+               operator: In
+               values:
+               - redis
+            topologyKey: kubernetes.io/hostname
+      containers:
+      - name: redis-slave
+        image: alleyz.com:5000/redis-3.2.11:alpine-simple
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: MASTER
+            value: "false"
+          - name: PASSWORD
+            value: "12345678Az"
+          - name: MASTER_IP
+            value: "10.44.0.3"
+        ports:
+        - containerPort: 6379
+        resources:
+          requests:
+            memory: "4Gi"
+          limits:
+            memory: "8Gi"
+        volumeMounts:
+          - mountPath: /redis-data
+            name: redis-pvc-slave
+      nodeSelector:
+        type: phy
+      volumes:
+        - name: redis-pvc-slave
+          persistentVolumeClaim:
+            claimName: redis-pvc-0002

@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context>
+
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+    <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
+
+    <Valve className="com.alleyz.k8s.redissession.RedisSessionHandlerValve" />
+    <Manager className="com.alleyz.k8s.redissession.RedisSessionManager"
+             host="%REDIS_HOST%"
+             port="%REDIS_PORT%"
+             database="%REDIS_DB_IDX%"
+             maxInactiveInterval="60"
+             password="%REDIS_PWD%"
+    />
+</Context>
