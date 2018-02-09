@@ -1,8 +1,12 @@
-FROM alleyz.com:5000/alpine:3.6-b
+FROM alpine:3.7
 
 MAINTAINER alleyz@126.com
 
-RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" && \
+RUN RUN echo "http://mirrors.ustc.edu.cn/alpine/v3.7/main" > /etc/apk/repositories \
+         && echo "http://mirrors.ustc.edu.cn/alpine/v3.7/community" >> /etc/apk/repositories \
+         && apk update && apk add --no-cache bash tzdata \
+         && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+         && ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" && \
     ALPINE_GLIBC_PACKAGE_VERSION="2.26-r0" && \
     ALPINE_GLIBC_BASE_PACKAGE_FILENAME="glibc-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
     ALPINE_GLIBC_BIN_PACKAGE_FILENAME="glibc-bin-$ALPINE_GLIBC_PACKAGE_VERSION.apk" && \
