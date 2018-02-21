@@ -3,11 +3,11 @@ FROM data-cube.com:5000/hollycrm/alpine-36:glibc
 MAINTAINER alleyz@126.com
 
 ENV JAVA_VERSION=8 \
-    JAVA_UPDATE=151 \
+    JAVA_UPDATE=161 \
     JAVA_BUILD=12 \
-    JAVA_PATH=e758a0de34e24606bca991d704f6dcbf \
+    JAVA_PATH=2f38c3b165be4555a1fa6e98c45e0808 \
     JAVA_HOME="/usr/lib/jvm/default-jvm"
-
+# http://download.oracle.com/otn-pub/java/jdk/8u161-b12/2f38c3b165be4555a1fa6e98c45e0808/jdk-8u161-linux-x64.tar.gz?AuthParam=1519176248_7350a0d1cec7aa0bd8550c69dfc68436
 RUN apk add --no-cache --virtual=build-dependencies wget ca-certificates unzip && \
     cd "/tmp" && \
     wget --header "Cookie: oraclelicense=accept-securebackup-cookie;" \
