@@ -12,5 +12,5 @@ spec:
   ports:
   - name: tcp
     port: 6379
-    nodePort: 36379
+    nodePort: 32637
     protocol: TCP
