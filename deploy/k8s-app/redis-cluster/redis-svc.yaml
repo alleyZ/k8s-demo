@@ -8,6 +8,7 @@ metadata:
 spec:
   selector:
     name: redis
+    role: master
   type: NodePort
   ports:
   - name: tcp
