@@ -2,7 +2,7 @@ FROM data-cube.com:5000/hollycrm/alpine-36:basic
 
 MAINTAINER alleyz@126.com
 
-RUN apk add --no-cache redis=3.2.11 sed
+RUN apk add --no-cache redis=3.2.11-r0 sed
 
 COPY redis.conf /redis.conf
 COPY run.sh /run.sh
