@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: redis
+  namespace: data-cube
+spec:
+  replicas: 1
+  selector:
+    name: redis
+  template:
+    metadata:
+      labels:
+        name: redis
+        role: master
+      namespace: data-cube
+    spec:
+      containers:
+      - name: redis
+        image: data-cube.com:5000/hollycrm/redis-sentinel:3.2.11
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 6379
+        resources:
+          limits:
+            cpu: "0.1"
+        volumeMounts:
+        - mountPath: /redis-master-data
+          name: data
+      volumes:
+        - name: data

@@ -6,11 +6,12 @@ metadata:
     redis-sentinel: "true"
     role: master
   name: redis-master
+  namespace: data-cube
 spec:
   containers:
     - name: master
-      image: alleyz.com:5000/redis:3.2.11-alpine
-      imagePullPolicy: IfNotPresent
+      image: data-cube.com:5000/hollycrm/redis-sentinel:3.2.11
+      imagePullPolicy: Always
       env:
         - name: MASTER
           value: "true"
@@ -23,8 +24,8 @@ spec:
         - mountPath: /redis-master-data
           name: data
     - name: sentinel
-      image: alleyz.com:5000/redis:3.2.11-alpine
-      imagePullPolicy: IfNotPresent
+      image: data-cube.com:5000/hollycrm/redis-sentinel:3.2.11
+      imagePullPolicy: Always
       env:
         - name: SENTINEL
           value: "true"
