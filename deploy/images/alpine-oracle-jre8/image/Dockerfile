@@ -1,4 +1,4 @@
-FROM alleyz.com:5000/alpine-glibc:3.6
+FROM data-cube.com:5000/hollycrm/alpine-36:glibc
 
 MAINTAINER alleyz@126.com
 
