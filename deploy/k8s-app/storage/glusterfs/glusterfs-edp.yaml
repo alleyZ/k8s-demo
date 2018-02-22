@@ -3,23 +3,23 @@ kind: Endpoints
 metadata:
   name: glusterfs-edp
 subsets:
-  - address:
+  - addresses:
       - ip: 10.8.177.26
     ports:
       - port: 9190
-  - address:
+  - addresses:
       - ip: 10.8.177.27
     ports:
       - port: 9190
-  - address:
+  - addresses:
       - ip: 10.8.177.28
     ports:
       - port: 9190
-  - address:
+  - addresses:
       - ip: 10.8.177.29
     ports:
       - port: 9190
-  - address:
+  - addresses:
       - ip: 10.8.177.30
     ports:
       - port: 9190
