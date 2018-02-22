@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nexus-dep
+  namespace: data-cube
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nexus
+  template:
+    metadata:
+      namespace: data-cube
+      labels:
+        app: nexus
+    spec:
+      containers:
+      - name: nexus
+        image: data-cube.com:5000/hollycrm/nexus3-alpine:3.8
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8081
+        volumeMounts:
+          mountPath: /nexus-data
+          name: nexus-vol
+      volumes:
+      - name: nexus-vol
+        persistentVolumeClaim:
+          claimName: pvc-20g-nexus
