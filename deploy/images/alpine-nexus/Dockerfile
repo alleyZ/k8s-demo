@@ -26,7 +26,8 @@ COPY nexus-${NEXUS_VERSION}-unix.tar.gz /nexus-${NEXUS_VERSION}-unix.tar.gz
 
 # install nexus
 RUN mkdir -p ${NEXUS_HOME} \
-  tar xf -C ${NEXUS_HOME} --strip-components=1 nexus-${NEXUS_VERSION}-unix.tar.gz \
+  && tar xf /nexus-${NEXUS_VERSION}-unix.tar.gz -C ${NEXUS_HOME} --strip-components 1 \
+  && rm -rf /nexus-${NEXUS_VERSION}-unix.tar.gz \
   && chown -R root:root ${NEXUS_HOME}
 
 # configure nexus
