@@ -4,22 +4,22 @@ metadata:
   name: glusterfs-edp
 subsets:
   - address:
-    - ip: 10.8.177.26
+      - ip: 10.8.177.26
     ports:
-    - port: 9190
+      - port: 9190
   - address:
-    - ip: 10.8.177.27
+      - ip: 10.8.177.27
     ports:
-    - port: 9190
+      - port: 9190
   - address:
-    - ip: 10.8.177.28
+      - ip: 10.8.177.28
     ports:
-    - port: 9190
+      - port: 9190
   - address:
-    - ip: 10.8.177.29
+      - ip: 10.8.177.29
     ports:
-    - port: 9190
+      - port: 9190
   - address:
-    - ip: 10.8.177.30
+      - ip: 10.8.177.30
     ports:
-    - port: 9190
+      - port: 9190
