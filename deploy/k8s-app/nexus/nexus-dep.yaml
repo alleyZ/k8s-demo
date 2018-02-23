@@ -21,8 +21,8 @@ spec:
         ports:
         - containerPort: 8081
         volumeMounts:
-          mountPath: /nexus-data
-          name: nexus-vol
+          - mountPath: /nexus-data
+            name: nexus-vol
       volumes:
       - name: nexus-vol
         persistentVolumeClaim:
