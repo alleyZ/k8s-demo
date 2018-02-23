@@ -8,7 +8,7 @@ ENV SONARQUBE_HOME=/opt/sonarqube \
     SONARQUBE_JDBC_PASSWORD=sonar \
     SONARQUBE_JDBC_URL=""
 
-EXPOSE 9000
+EXPOSE 9000 9092
 
 RUN addgroup -S sonarqube && adduser -S -G sonarqube sonarqube && mkdir /opt
 

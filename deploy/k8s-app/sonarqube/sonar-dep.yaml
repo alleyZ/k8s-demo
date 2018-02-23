@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: sonarqube-dep
+  namespace: data-cube
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sonarqube
+  template:
+    metadata:
+      namespace: data-cube
+      labels:
+        app: sonarqube
+    spec:
+      containers:
+      - name: sonarqube
+        image: data-cube.com:5000/hollycrm/sonarqube-alpine:7.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9000
+        - containerPort: 9092
