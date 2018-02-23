@@ -13,6 +13,7 @@ EXPOSE 9000 9092
 RUN addgroup -S sonarqube && adduser -S -G sonarqube sonarqube && mkdir /opt
 
 COPY sonarqube-$SONAR_VERSION.zip /opt/sonarqube-$SONAR_VERSION.zip
+COPY run.sh /run.sh
 
 RUN set -x \
     && apk add --no-cache su-exec unzip \
@@ -21,10 +22,11 @@ RUN set -x \
     && mv sonarqube-$SONAR_VERSION sonarqube \
     && chown -R sonarqube:sonarqube sonarqube \
     && rm sonarqube-$SONAR_VERSION.zip \
-    && rm -rf $SONARQUBE_HOME/bin/*
+    && rm -rf $SONARQUBE_HOME/bin/* \
+    && chmod 777 /run,sh \
+    && mv /run.sh $SONARQUBE_HOME/bin/
 
 VOLUME "$SONARQUBE_HOME/data"
 
 WORKDIR $SONARQUBE_HOME
-COPY run.sh $SONARQUBE_HOME/bin/
 ENTRYPOINT ["./bin/run.sh"]
