@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Endpoints
 metadata:
   name: glusterfs-edp
+  namespace: data-cube
 subsets:
   - addresses:
       - ip: 10.8.177.26
