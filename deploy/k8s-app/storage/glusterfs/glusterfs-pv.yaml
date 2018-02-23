@@ -6,11 +6,11 @@ metadata:
     use: nexus
 spec:
   capacity:
-    storage: 20Gi
+    storage: 30Gi
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Recycle
   glusterfs:
     endpoints: "glusterfs-edp"
-    path: "pv-20g-01"
+    path: "nexus-vol"
     readOnly: false
