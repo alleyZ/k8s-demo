@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-20g-nexus
+  name: pvc-30g-nexus
   namespace: data-cube
   labels:
     pvc: nexus
@@ -10,7 +10,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 20Gi
+      storage: 30Gi
   selector:
     matchLabels:
       use: nexus
