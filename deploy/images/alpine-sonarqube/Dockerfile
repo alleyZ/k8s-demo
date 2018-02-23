@@ -23,7 +23,7 @@ RUN set -x \
     && chown -R sonarqube:sonarqube sonarqube \
     && rm sonarqube-$SONAR_VERSION.zip \
     && rm -rf $SONARQUBE_HOME/bin/* \
-    && chmod 777 /run,sh \
+    && chmod 777 /run.sh \
     && mv /run.sh $SONARQUBE_HOME/bin/
 
 VOLUME "$SONARQUBE_HOME/data"
