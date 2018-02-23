@@ -13,4 +13,4 @@ spec:
   - name: http
     port: 8081
     nodePort: 32081
-    protocol: HTTP
+    protocol: TCP
