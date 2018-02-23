@@ -12,9 +12,9 @@ spec:
   ports:
   - name: web
     port: 9000
-    nodePort: 32900
+    nodePort: 32090
     protocol: TCP
   - name: web2
     port: 9092
-    nodePort: 32902
+    nodePort: 32092
     protocol: TCP
