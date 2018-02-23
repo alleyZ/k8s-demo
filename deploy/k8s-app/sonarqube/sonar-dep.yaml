@@ -18,6 +18,13 @@ spec:
       - name: sonarqube
         image: data-cube.com:5000/hollycrm/sonarqube-alpine:7.0
         imagePullPolicy: Always
+        env:
+          - name: "SONARQUBE_JDBC_URL"
+            value: "jdbc:mysql://10.8.177.29:3306/sonar?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false"
+          - name: "SONARQUBE_JDBC_USERNAME"
+            value: "sonar"
+          - name: "SONARQUBE_JDBC_PASSWORD"
+            value: "Q1w2e3r$"
         ports:
         - containerPort: 9000
         - containerPort: 9092
