@@ -20,7 +20,7 @@ spec:
         imagePullPolicy: Always
         env:
           - name: "SONARQUBE_JDBC_URL"
-            value: "jdbc:mysql://10.8.177.29:3306/sonar?useUnicode=true&characterEncoding=utf8&useSSL=false"
+            value: "jdbc:mysql://10.8.177.29:3306/sonar_db??useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance&useSSL=false"
           - name: "SONARQUBE_JDBC_USERNAME"
             value: "sonar"
           - name: "SONARQUBE_JDBC_PASSWORD"

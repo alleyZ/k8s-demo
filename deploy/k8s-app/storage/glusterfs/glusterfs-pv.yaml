@@ -29,5 +29,5 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   glusterfs:
     endpoints: "glusterfs-edp"
-    path: "sonarqube-vol"
+    path: "sonar-vol"
     readOnly: false
