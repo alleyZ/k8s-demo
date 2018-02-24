@@ -1,7 +1,7 @@
 FROM data-cube.com:5000/hollycrm/alpine-36:basic
 
 RUN apk update && \
-    apk add  "libpq@edge<9.7" "postgresql-client<9.7" "postgresql<9.7" "postgresql-contrib<9.7" && \
+    apk add  "libpq<9.7" "postgresql-client<9.7" "postgresql<9.7" "postgresql-contrib<9.7" && \
     mkdir /docker-entrypoint-initdb.d && \
     curl -o /usr/local/bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/1.2/gosu-amd64" && \
     chmod +x /usr/local/bin/gosu && \
