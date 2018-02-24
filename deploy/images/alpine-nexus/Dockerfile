@@ -19,7 +19,7 @@ ENV JAVA_HOME=/usr/lib/jvm/default-jvm \
 ENV SONATYPE_DIR=/opt/sonatype
 ENV NEXUS_HOME=${SONATYPE_DIR}/nexus \
   NEXUS_DATA=/nexus-data \
-  NEXUS_CONTEXT='' \
+  NEXUS_CONTEXT='nexus' \
   SONATYPE_WORK=${SONATYPE_DIR}/sonatype-work
 
 COPY nexus-${NEXUS_VERSION}-unix.tar.gz /nexus-${NEXUS_VERSION}-unix.tar.gz

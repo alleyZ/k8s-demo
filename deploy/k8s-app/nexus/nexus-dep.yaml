@@ -18,9 +18,9 @@ spec:
       - name: nexus
         image: data-cube.com:5000/hollycrm/nexus3-alpine:3.8
         imagePullPolicy: Always
-        env:
-          - name: "NEXUS_CONTEXT"
-            value: "/nexus"
+#        env:
+#          - name: "NEXUS_CONTEXT"
+#            value: "/nexus"
         ports:
         - containerPort: 8081
         volumeMounts:
