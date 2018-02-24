@@ -14,7 +14,3 @@ spec:
     port: 9000
     nodePort: 32090
     protocol: TCP
-  - name: web2
-    port: 9092
-    nodePort: 32092
-    protocol: TCP

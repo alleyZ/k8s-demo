@@ -27,4 +27,11 @@ spec:
             value: "Q1w2e3r$"
         ports:
         - containerPort: 9000
-        - containerPort: 9092
+#        - containerPort: 9092
+        volumeMounts:
+          - mountPath: /opt/sonarqube/data
+            name: sonar-vol
+      volumes:
+      - name: sonar-vol
+        persistentVolumeClaim:
+          claimName: pvc-10g-sonar
