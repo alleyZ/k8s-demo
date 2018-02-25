@@ -1,10 +1,15 @@
 FROM data-cube.com:5000/hollycrm/alpine-36:basic
 
+MAINTAINER alleyz@126.com
+
+COPY docker-entrypoint.sh /
+
 RUN apk update && \
     apk add  "libpq<9.7" "postgresql-client<9.7" "postgresql<9.7" "postgresql-contrib<9.7" && \
     mkdir /docker-entrypoint-initdb.d && \
     curl -o /usr/local/bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/1.2/gosu-amd64" && \
     chmod +x /usr/local/bin/gosu && \
+    chmod +x /docker-entrypoint.sh && \
     apk del curl && \
     rm -rf /var/cache/apk/*
 
@@ -12,7 +17,7 @@ ENV LANG en_US.utf8
 ENV PGDATA /var/lib/postgresql/data
 VOLUME /var/lib/postgresql/data
 
-COPY docker-entrypoint.sh /
+
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
