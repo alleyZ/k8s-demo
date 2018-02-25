@@ -31,3 +31,20 @@ spec:
     endpoints: "glusterfs-edp"
     path: "sonar-vol"
     readOnly: false
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-10g-postgresql
+  labels:
+    use: postgresql
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  glusterfs:
+    endpoints: "glusterfs-edp"
+    path: "postgresql-vol"
+    readOnly: false

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgresql-svc
+  namespace: data-cube
+  labels:
+    role: postgresql-svc
+spec:
+  selector:
+    app: postgresql
+  type: NodePort
+  ports:
+  - name: http
+    port: 5432
+    nodePort: 32032
+    protocol: TCP

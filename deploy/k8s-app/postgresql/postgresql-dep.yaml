@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: postgresql-dep
+  namespace: data-cube
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgresql
+  template:
+    metadata:
+      namespace: data-cube
+      labels:
+        app: postgresql
+    spec:
+      containers:
+      - name: postgresql
+        image: data-cube.com:5000/hollycrm/postgresql-alpine:9.6
+        imagePullPolicy: Always
+        env:
+          - name: "POSTGRES_PASSWORD"
+            value: "postgresql5432"
+        ports:
+        - containerPort: 5432
+        volumeMounts:
+          - mountPath: /var/lib/postgresql/data
+            name: postgresql-vol
+      volumes:
+      - name: postgresql-vol
+        persistentVolumeClaim:
+          claimName: pvc-10g-postgresql
