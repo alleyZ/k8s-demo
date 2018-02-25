@@ -1,7 +1,7 @@
 #!/bin/sh
 chown -R postgres "$PGDATA"
 mkdir -p /run/postgresql/
-chmod -R postgres /run/postgresql/
+chown -R postgres /run/postgresql/
 
 if [ -z "$(ls -A "$PGDATA")" ]; then
     gosu postgres initdb
