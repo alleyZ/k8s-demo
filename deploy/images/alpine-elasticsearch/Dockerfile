@@ -1,4 +1,4 @@
-FROM alleyz.com:5000/alpine-jre8:oracle
+FROM data-cube.com:5000/hollycrm/jdk-oracle:8
 
 MAINTAINER alleyz@126.com
 

@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: es-dep
-  namespace: demo
+  namespace: data-cube
 spec:
   replicas: 3
   selector:
@@ -10,7 +10,7 @@ spec:
       app: es
   template:
     metadata:
-      namespace: demo
+      namespace: data-cube
       name: es
       labels:
         app: es
@@ -39,7 +39,7 @@ spec:
             topologyKey: kubernetes.io/hostname
       containers:
       - name: es
-        image: alleyz.com:5000/elasticsearch:5.6.5
+        image: data-cube.com:5000/hollycrm/elasticsearch:5.6.5
         imagePullPolicy: Always
         env:
           - name: CLUSTER_NAME
@@ -72,7 +72,7 @@ spec:
       volumes:
         - name: es-data
           hostPath:
-            path: /home/k8s/es/data
+            path: /home/es-data/data
         - name: es-log
           hostPath:
-            path: /home/k8s/es/logs
+            path: /home/es-data/logs
