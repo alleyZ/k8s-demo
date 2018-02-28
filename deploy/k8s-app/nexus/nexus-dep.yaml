@@ -11,6 +11,7 @@ spec:
   template:
     metadata:
       namespace: data-cube
+      name: nexus
       labels:
         app: nexus
     spec:
@@ -20,12 +21,14 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 8081
+          name: http
+          protocol: TCP
         volumeMounts:
           - mountPath: /nexus-data
-            name: nexus-vol
+            name: nexus-data
       nodeSelector:
         nexus: true
       volumes:
-      - name: nexus-vol
-        hostPath:
-          path: /home/nexus-data
+        - name: nexus-data
+          hostPath:
+            path: /home/nexus-data
