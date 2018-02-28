@@ -4,7 +4,7 @@ metadata:
   name: pvc-10g-sonar
   namespace: data-cube
   labels:
-    pvc: nexus
+    pvc: sonar
 spec:
   accessModes:
     - ReadWriteOnce
@@ -14,3 +14,20 @@ spec:
   selector:
     matchLabels:
       use: sonar
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-100m-sonar
+  namespace: data-cube
+  labels:
+    pvc: sonar-ext
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  selector:
+    matchLabels:
+      use: sonar-ext

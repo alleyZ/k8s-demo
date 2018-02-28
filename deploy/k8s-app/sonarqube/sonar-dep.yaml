@@ -31,7 +31,11 @@ spec:
         volumeMounts:
           - mountPath: /opt/sonarqube/data
             name: sonar-vol
+          - mountPath: /opt/sonarqube/extensions/plugins
       volumes:
       - name: sonar-vol
         persistentVolumeClaim:
           claimName: pvc-10g-sonar
+      - name: sonar-ext-vol
+        persistentVolumeClaim:
+          claimName: pvc-100m-sonar
