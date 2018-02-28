@@ -32,6 +32,7 @@ spec:
           - mountPath: /opt/sonarqube/data
             name: sonar-vol
           - mountPath: /opt/sonarqube/extensions/plugins
+            name: sonar-ext-vol
       volumes:
       - name: sonar-vol
         persistentVolumeClaim:
