@@ -27,7 +27,7 @@ spec:
           - mountPath: /nexus-data
             name: nexus-data
       nodeSelector:
-        nexus: true
+        nexus: "true"
       volumes:
         - name: nexus-data
           hostPath:
