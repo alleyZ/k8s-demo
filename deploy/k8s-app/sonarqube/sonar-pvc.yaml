@@ -27,7 +27,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 10Gi
+      storage: 100Mi
   selector:
     matchLabels:
       use: sonar-ext
