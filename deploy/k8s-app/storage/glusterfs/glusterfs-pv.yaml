@@ -57,7 +57,7 @@ metadata:
     use: sonar-ext
 spec:
   capacity:
-    storage: 100M
+    storage: 100Mi
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Recycle
