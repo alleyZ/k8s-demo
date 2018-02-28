@@ -54,7 +54,7 @@ kind: PersistentVolume
 metadata:
   name: pv-100m-sonar
   labels:
-    use: postgresql
+    use: sonar-ext
 spec:
   capacity:
     storage: 100M
